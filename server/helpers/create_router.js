@@ -16,7 +16,7 @@ const createRouter = function (collection) {
         res.json({ status: 500, error: err })
       });
   });
-  
+
   router.get('/:id', (req, res) => {
     const id = req.params.id;
     collection
@@ -28,6 +28,14 @@ const createRouter = function (collection) {
         res.json({ status: 500, error: err })
       });
   });
+
+  router.post('/', (req, res) => {
+    const newItem = req.body;
+    collection
+      .insertOne(newItem)
+      .then(() => collection.find().toArray())
+      .then((docs) => res.json(docs))
+  })
 
   return router;
 };
