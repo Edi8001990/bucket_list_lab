@@ -6,15 +6,26 @@ const Items = function(url) {
   this.request = new RequestHelper(this.url);
 }
 
+Items.prototype.bindEvents = function () {
+  PubSub.subscribe('ItemFormView:submit', (event) => {
+    this.postItem(event.detail)
+  })
+}
+
 
 Items.prototype.getData = function() {
   this.request.get()
     .then((items) =>{
       PubSub.publish('Items:data-loaded', items);
     })
-    
       .catch(console.error)
-
 };
+
+Items.prototype.postItem = function (item) {
+  this.request.post(item)
+    .then((items) => {
+      PubSub.publish('Items:data-loaded', items)
+    })
+}
 
 module.exports = Items;
