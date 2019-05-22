@@ -1,9 +1,80 @@
-body {
+html, body {
+  margin: 0 auto;
+}
 
+h1,h2{
+  text-align: center;
+}
+
+form{
+  text-align: center;
+  font-size:20px;
+}
+
+.input{
+  padding:10px;
+}
+
+
+
+#save[type="submit"]{
+  background-color: #356dc6;
+  cursor: pointer;
+  width:70px;
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+body{
+  color: #3a3a3a;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f2f2f2;
 }
 
 .remove-button {
-  width: 20px;
-  height: 20px;
-  background-color: red;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  background: url(../images/delete-button.png);
+  background-size:30px;
+  border: none;
+  cursor: pointer;
+}
+
+.complete-button {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  background-color: green;
+  background: url(../images/thumbs-up.png);
+  background-size:30px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.items{
+
+    grid-template-columns: auto auto auto;
+    display: grid;
+}
+
+#item{
+  color: #3a3a3a;
+  background-color: #e2e2e2;
+  margin:30px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+}
+
+
+
+#item:hover{
+  background-color: #e5e5e5;
+  -webkit-box-shadow: 10px 10px 20px -6px rgba(0,0,0,0.28);
+    -moz-box-shadow: 10px 10px 20px -6px rgba(0,0,0,0.28);
+    box-shadow: 10px 10px 20px -6px rgba(0,0,0,0.28);
 }

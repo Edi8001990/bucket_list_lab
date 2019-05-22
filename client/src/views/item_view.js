@@ -6,7 +6,7 @@ const ItemView = function(container) {
 
 ItemView.prototype.render = function(item) {
   const itemContainer = document.createElement('div')
-  itemContainer.class = 'item';
+  itemContainer.id = 'item';
 
   const activity = this.createHeading(item.activity);
   itemContainer.appendChild(activity);
@@ -14,8 +14,14 @@ ItemView.prototype.render = function(item) {
   const category = this.createDetail(item.category);
   itemContainer.appendChild(category);
 
+  const complete = this.createComplete(item.complete);
+  itemContainer.appendChild(complete);
+
   const deleteButton = this.createDeleteButton(item._id);
   itemContainer.appendChild(deleteButton)
+
+  const completeButton = this.createCompleteButton(item._id);
+  itemContainer.appendChild(completeButton)
 
   this.container.appendChild(itemContainer);
 }
@@ -33,6 +39,12 @@ ItemView.prototype.createDetail = function(textContent) {
   return detail;
 }
 
+ItemView.prototype.createComplete = function(textContent) {
+  const complete = document.createElement('h4');
+  complete.textContent = `Complete? ${textContent}` ;
+  return complete;
+}
+
 ItemView.prototype.createDeleteButton = function (itemId) {
   const button = document.createElement('button')
   button.classList.add('remove-button')
@@ -40,6 +52,17 @@ ItemView.prototype.createDeleteButton = function (itemId) {
 
   button.addEventListener('click', (event) => {
     PubSub.publish('ItemView:item-delete-clicked', event.target.value)
+  })
+  return button;
+}
+
+ItemView.prototype.createCompleteButton = function (itemId) {
+  const button = document.createElement('button')
+  button.classList.add('complete-button')
+  button.value = itemId;
+
+  button.addEventListener('click', (event) => {
+    PubSub.publish('ItemView:item-complete-clicked', event.target.value)
   })
   return button;
 }

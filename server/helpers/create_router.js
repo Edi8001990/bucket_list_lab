@@ -50,6 +50,21 @@ const createRouter = function (collection) {
       });
   })
 
+  // write .put/patch router
+
+  router.patch('/:id', (req, res)=>{
+    const id = req.params.id;
+    collection
+      .updateOne(
+        { _id: ObjectID(id)},
+        { $set: {complete: 'Yes'}}
+
+      )
+        .then(()=> collection.find().toArray())
+        .then((docs) => res.json(docs));
+
+  })
+
   return router;
 };
 

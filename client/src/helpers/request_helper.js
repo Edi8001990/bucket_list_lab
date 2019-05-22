@@ -23,4 +23,11 @@ RequestHelper.prototype.post = function (data) {
     .then((response) => response.json());
 }
 
+RequestHelper.prototype.patch = function (id) {
+  return fetch(`${this.url}/${id}`, {
+    method: "PATCH"
+})
+.then((response) => response.json())
+}
+
 module.exports = RequestHelper;

@@ -5,19 +5,25 @@
     <title>Bucket List</title>
     <script src="/js/bundle.js"></script>
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
   </head>
   <body>
     <h1>Bucket List</h1>
     <form class="create-item">
-      <div>
+      <div class="input">
         <label for="activity">Activity:</label>
+        <br>
         <input type="text" id="activity">
       </div>
-      <div>
-        <label for="category">Category</label>
+      <div class="input">
+        <label for="category">Category:</label>
+        <br>
         <input type="text" id="category">
       </div>
       <div>
+        <input type="text" id="complete" value="no" hidden>
+      </div>
+      <div class="input">
         <input type="submit" value="Save" id="save">
       </div>
 

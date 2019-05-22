@@ -4,10 +4,12 @@ db.dropDatabase();
 db.items.insertMany([
   {
     activity: "Backpack through Europe",
-    category: "Travel"
+    category: "Travel",
+    complete: "No"
   },
   {
     activity: "Learn Piano",
-    category: "Skill"
+    category: "Skill",
+    complete: "No"
   }
 ])

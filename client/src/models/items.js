@@ -14,6 +14,12 @@ Items.prototype.bindEvents = function () {
   PubSub.subscribe('ItemFormView:submit', (event) => {
     this.postItem(event.detail)
   })
+
+  PubSub.subscribe('ItemView:item-complete-clicked', (event) => {
+    this.patchItem(event.detail)
+  })
+
+
 }
 
 
@@ -37,6 +43,14 @@ Items.prototype.deleteItem = function (itemId) {
     .then((items) => {
       PubSub.publish('Items:data-loaded', items)
     })
+}
+
+Items.prototype.patchItem = function(itemId) {
+  this.request.patch(itemId)
+    .then((items) => {
+        PubSub.publish('Items:data-loaded', items)
+    })
+
 }
 
 module.exports = Items;

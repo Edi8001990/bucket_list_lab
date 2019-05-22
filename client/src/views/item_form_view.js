@@ -20,7 +20,8 @@ ItemFormView.prototype.handleSubmit = function (event) {
 ItemFormView.prototype.createNewItem = function (form) {
   const newItem = {
     activity: form.activity.value,
-    category: form.category.value
+    category: form.category.value,
+    complete: form.complete.value
   }
   return newItem;
 }
